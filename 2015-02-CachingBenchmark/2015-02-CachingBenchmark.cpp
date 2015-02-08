@@ -68,9 +68,9 @@ void sequentialTest(const std::map<long, double> alphas, size_t nbRun)
 	}
 
 	std::cout << nbVals << " sequential values 10 times" << std::endl;
-	std::cout << "Wall Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall0e - wall0s).count() << std::endl;
-	std::cout << "Wall Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall1e - wall1s).count() << std::endl;
-	std::cout << "Wall Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall2e - wall2s).count() << std::endl;
+	std::cout << "Simple Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall0e - wall0s).count() << std::endl;
+	std::cout << "Precomp Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall1e - wall1s).count() << std::endl;
+	std::cout << "Lazy Cache Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall2e - wall2s).count() << std::endl;
 
 }
 
@@ -125,16 +125,16 @@ void randomValuesTest(const std::map<long, double> alphas, const std::vector<int
 	}
 
 	std::cout << "30 000 random values " << nbRun << " times" << std::endl;
-	std::cout << "Wall Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall0e - wall0s).count() << std::endl;
-	std::cout << "Wall Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall1e - wall1s).count() << std::endl;
-	std::cout << "Wall Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall2e - wall2s).count() << std::endl;
+	std::cout << "Simple Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall0e - wall0s).count() << std::endl;
+	std::cout << "Precomp Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall1e - wall1s).count() << std::endl;
+	std::cout << "Lazy cache Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall2e - wall2s).count() << std::endl;
 
 }
 
 void randomRepeatedValuesTest(const std::map<long, double> alphas, const std::vector<int> randDatesInput, size_t nbRun)
 {
-	size_t nbRepeat = 200;
-	size_t nbValues = 200;
+	size_t nbRepeat = 400;
+	size_t nbValues = 100;
 	std::vector<int> randDates = randDatesInput;
 	randDates.resize(nbValues);
 	//  Start Timers
@@ -182,9 +182,9 @@ void randomRepeatedValuesTest(const std::map<long, double> alphas, const std::ve
 	auto wall2e = std::chrono::high_resolution_clock::now();
 
 	std::cout << "Repeat " << nbRepeat  << " times the same " << nbValues << " random values (do this " << nbRun << " times)" << std::endl;
-	std::cout << "Wall Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall0e - wall0s).count() << std::endl;
-	std::cout << "Wall Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall1e - wall1s).count() << std::endl;
-	std::cout << "Wall Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall2e - wall2s).count() << std::endl;
+	std::cout << "Simple Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall0e - wall0s).count() << std::endl;
+	std::cout << "Precomp Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall1e - wall1s).count() << std::endl;
+	std::cout << "Lazy Time = " << std::chrono::duration_cast<std::chrono::duration<double>>(wall2e - wall2s).count() << std::endl;
 
 }
 

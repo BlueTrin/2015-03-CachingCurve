@@ -1,6 +1,7 @@
 #pragma once
 #include "ICurve.h"
 
+#include <memory>
 #include <map>
 
 class LazyCachingCurve : public ICurve
@@ -11,9 +12,7 @@ public:
 	double df(long date) const;
 
 private:
-	static const long s_cacheSize;
-	std::map<long, double> m_alphas;
+	std::shared_ptr<ICurve> m_curveImpl;
 	mutable std::map<long, double> m_cachedDfs;
-	long m_start;
 };
 
